@@ -1,0 +1,2 @@
+#!/bin/bash
+rails server -e development -b 172.18.95.1

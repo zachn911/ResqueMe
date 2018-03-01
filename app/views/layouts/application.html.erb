@@ -1,0 +1,47 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html itemscope itemtype="https://schema.org/" id="ie6" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 7 ]>   <html itemscope itemtype="https://schema.org/" id="ie7" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 8 ]>   <html itemscope itemtype="https://schema.org/" id="ie8" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 9 ]>   <html itemscope itemtype="https://schema.org/" id="ie9" class="ie" lang="en-US"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html itemscope itemtype="https://schema.org/" lang="en-US">
+<!--<![endif]-->
+<head>
+  <title>ResqueMe</title>
+
+  <%= yield :before_scripts %>
+
+  <%= render "shared/header_meta" %>
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,600' rel='stylesheet' type='text/css'>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+  <%= yield :after_scripts %>
+</head>
+
+<body class="skin-deep-blue sidebar-image misty-mountains">
+  <div class="wrapper">
+    <%= render "shared/header" %>
+    <%= render "shared/sidebar" %>
+
+    <div class="page-loader">
+      <div class="preloader-lg"></div>
+    </div>
+
+
+    <div class="content-wrapper-transition">
+      <div class="content-wrapper-inner">
+        <%= yield %>
+        <%= render "shared/footer" %>
+        <%= yield :after_body %>
+      </div>
+    </div>
+  </div><!-- wrapper -->
+
+</body>
+</html>

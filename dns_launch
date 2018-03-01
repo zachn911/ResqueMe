@@ -1,0 +1,2 @@
+#!/bin/bash
+rails server -e development -b 76.237.85.106

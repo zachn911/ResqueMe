@@ -1,0 +1,50 @@
+<% content_for :before_scripts do %>
+  <link rel="stylesheet" href="/plugins/leaflet/leaflet.css"
+  <link rel="stylesheet" href="/plugins/leaflet/maps.css"
+  <script src="/plugins/leaflet/leaflet.js"</script>
+<% end %>
+
+<div class="content-wrapper dashboard-page">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <h1 class="page-title">
+          Overview Map
+        </h1>
+
+      </div>
+    </div>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div id="mapid"style="height:100vh;">
+    </div>
+
+<script type ='text/javascript'>
+
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position){
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+  });
+
+var map = L.map('map')
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+maxZoom: 20,
+id: 'mapbox.streets',
+accessToken: 'pk.eyJ1IjoicmVzcXVlbWUiLCJhIjoiY2pkZG91aDNuMDRsMDJ3bmpnOGJpNGNlNyJ9.hwp2QeD6easWjlAlaEIJ2w'
+}).addTo(map);
+
+map.locate({setView: true, maxZoom: 20});
+
+}else {
+  alert("Geolocation API is not supported in your browser. :(");
+  }
+
+
+</script>
+
+  </section><!-- /.content -->
+</div><!-- /.content-wrapper -->

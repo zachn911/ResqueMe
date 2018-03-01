@@ -1,0 +1,21 @@
+<header class="main-header">
+  <a href="/pages/index.html" class="logo">
+    <span class="logo-lg">ResqueMe</span>
+  </a>
+  <nav class="navbar navbar-static-top" role="navigation">
+    <a href="#" class="sidebar-toggle border-right border-left" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+
+        <li>
+          <%= link_to page_path(page: "login"), data: { pjax: true} do %>
+            <span>Sign In</span>
+          <% end %>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</header>
