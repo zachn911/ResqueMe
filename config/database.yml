@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: atlas-rails_production
-  username: atlas-rails
-  password: <%= ENV['ATLAS-RAILS_DATABASE_PASSWORD'] %>
+  database: resqueme_production
+  #username: atlas-rails
+ # password: <%= ENV['ATLAS-RAILS_DATABASE_PASSWORD'] %>

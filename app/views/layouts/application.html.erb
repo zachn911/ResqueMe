@@ -20,6 +20,7 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= include_sync_config %>
 
   <%= yield :after_scripts %>
 </head>
@@ -30,7 +31,6 @@
     <%= render "shared/sidebar" %>
 
     <div class="page-loader">
-      <%= include_sync_config %>
       <div class="preloader-lg"></div>
     </div>
 
