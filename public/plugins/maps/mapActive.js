@@ -24,23 +24,24 @@ mymap.locate({
 })
 
 function onLocationFound(e) {
-    var radius = e.accuracy;
+    var radius = e.accuracy/3;
+ /*
+    var markerLocation = new L.LatLng(e.latlng)
+        //Extend the Default marker class
+        var IconCircle = L.Icon.Default.extend({
+            options: {
+                iconUrl: 'fa-dot-circle.png'
+            }
+        });
+    var iconCircle = new IconCircle();
 
- /*   var markerLocation = new L.LatLng(e.latlng);
+    L.marker(markerLocation, {icon: fa-dot-circle.png}).addTo(map);
+*/
+ //   L.marker(e.latlng).addTo(mymap)
 
-    //Extend the Default marker class
-    var IconCircle = L.Icon.Default.extend({
-        options: {
-            iconUrl: '../plugins/pics/fa-dot-circle.png'
-        }
-    });  */
- //   var iconCircle = new IconCircle();
+    L.circle(e.latlng, radius/2).addTo(mymap);
 
- //   L.marker(markerLocation, {icon: iconCircle}).addTo(map);
-
-    L.marker(e.latlng).addTo(mymap)
-
-    L.circle(e.latlng, radius).addTo(mymap);
+    L.circle(e.latlng, radius/12).addTo(mymap);
 }
 
 mymap.on('locationfound', onLocationFound);
