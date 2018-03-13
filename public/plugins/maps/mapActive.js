@@ -26,19 +26,19 @@ mymap.locate({
 function onLocationFound(e) {
     var radius = e.accuracy;
 
-    var markerLocation = new L.LatLng(e.latlng);
+ /*   var markerLocation = new L.LatLng(e.latlng);
 
     //Extend the Default marker class
     var IconCircle = L.Icon.Default.extend({
         options: {
-            iconUrl: 'plugins/pics/fa-dot-circle.png'
+            iconUrl: '../plugins/pics/fa-dot-circle.png'
         }
-    });
-    var iconCircle = new IconCircle();
+    });  */
+ //   var iconCircle = new IconCircle();
 
-    L.marker(markerLocation, {icon: iconCircle}).addTo(map);
+ //   L.marker(markerLocation, {icon: iconCircle}).addTo(map);
 
- //   L.marker(e.latlng).addTo(mymap)
+    L.marker(e.latlng).addTo(mymap)
 
     L.circle(e.latlng, radius).addTo(mymap);
 }
