@@ -15,8 +15,18 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(mymap);
 
 mymap.locate({
-    watch: true,
+    watch: false,
     setView: true,
     maxZoom: 16,
     enableHighAccuracy: true
 })
+
+function onLocationFound(e) {
+    var radius = e.accuracy/2;
+
+    L.circle(e.latlng, radius).addTo(mymap);
+
+    L.circle(e.latlng, 1).addTo(mymap);
+}
+
+mymap.on('locationfound', onLocationFound);

@@ -24,7 +24,7 @@ mymap.locate({
 })
 
 function onLocationFound(e) {
-    var radius = e.accuracy/3;
+    var radius = e.accuracy/2;
  /*
     var markerLocation = new L.LatLng(e.latlng)
         //Extend the Default marker class
@@ -39,9 +39,9 @@ function onLocationFound(e) {
 */
  //   L.marker(e.latlng).addTo(mymap)
 
-    L.circle(e.latlng, radius/2).addTo(mymap);
+    L.circle(e.latlng, radius).addTo(mymap);
 
-    L.circle(e.latlng, radius/12).addTo(mymap);
+    L.circle(e.latlng, 1).addTo(mymap);
 }
 
 mymap.on('locationfound', onLocationFound);
