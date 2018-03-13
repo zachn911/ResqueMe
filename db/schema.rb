@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "server", id: false, force: :cascade do |t|
-    t.integer "key_num",    array: true
-    t.integer "server_key", array: true
+  create_table "responder", primary_key: "responder_id", id: :bigint, force: :cascade do |t|
+    t.text "r_name"
+    t.text "qualfications"
+    t.text "medical_hist"
   end
 
 end
