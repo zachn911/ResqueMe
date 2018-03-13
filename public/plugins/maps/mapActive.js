@@ -1,9 +1,11 @@
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
+    navigator.geolocation.watchPosition(function(position){
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
     });
 
 }else {
-    alert("Geolocation API is not supported in your browser. :(");
+    alert("Geolocation API is not supported in your browser. :( ");
 }
 
 var mymap = L.map('mapid').setView([31.2, -91.1],14);
@@ -15,9 +17,32 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(mymap);
 
 mymap.locate({
-    watch: true,
+    watch: false,
     setView: true,
     maxZoom: 17,
     enableHighAccuracy: true
 })
+
+function onLocationFound(e) {
+    var radius = e.accuracy;
+
+    var markerLocation = new L.LatLng(e.latlng);
+
+    //Extend the Default marker class
+    var IconCircle = L.Icon.Default.extend({
+        options: {
+            iconUrl: 'plugins/pics/fa-dot-circle.png'
+        }
+    });
+    var iconCircle = new IconCircle();
+
+    L.marker(markerLocation, {icon: iconCircle}).addTo(map);
+
+ //   L.marker(e.latlng).addTo(mymap)
+
+    L.circle(e.latlng, radius).addTo(mymap);
+}
+
+mymap.on('locationfound', onLocationFound);
+
 
