@@ -1,5 +1,8 @@
 <% content_for :before_scripts do %>
-<link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/plugins/leaflet/leaflet.css"
+  <link rel="stylesheet" href="/plugins/leaflet/maps.css"
+  <script src="/plugins/leaflet/leaflet.js"</script>
 <% end %>
 
 <div class="content-wrapper dashboard-page">
@@ -15,6 +18,8 @@
   </section>
   <!-- Main content -->
   <section class="content">
+<div id="mapid"style="height:100vh;">
+</div>
+<script src="/plugins/maps/activeMap.js"></script>
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
