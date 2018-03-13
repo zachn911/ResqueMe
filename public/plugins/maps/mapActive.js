@@ -9,7 +9,7 @@ if (navigator.geolocation) {
 var mymap = L.map('mapid').setView([31.2, -91.1],14);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 16,
+    maxZoom: 20,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoicmVzcXVlbWUiLCJhIjoiY2pkZG91aDNuMDRsMDJ3bmpnOGJpNGNlNyJ9.hwp2QeD6easWjlAlaEIJ2w'
 }).addTo(mymap);
@@ -17,6 +17,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 mymap.locate({
     watch: true,
     setView: true,
-    maxZoom: 16,
+    maxZoom: 17,
     enableHighAccuracy: true
 })
+
