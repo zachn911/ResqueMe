@@ -15,10 +15,27 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authorization_level", id: false, force: :cascade do |t|
+    t.bigint  "responder_id"
+    t.bigint  "org_id"
+    t.integer "authorization", limit: 2
+  end
+
   create_table "responder", primary_key: "responder_id", id: :bigint, force: :cascade do |t|
     t.text "r_name"
     t.text "qualfications"
     t.text "medical_hist"
+  end
+
+  create_table "responder_node", id: false, force: :cascade do |t|
+    t.bigint  "responder_id"
+    t.text    "sensor_id"
+    t.integer "n_time"
+    t.float   "lat"
+    t.float   "long"
+    t.integer "n_temp",       limit: 2
+    t.integer "heartrate",    limit: 2
+    t.integer "status",       limit: 2
   end
 
   create_table "sensor_auth", primary_key: "sensor_id", id: :text, force: :cascade do |t|
@@ -33,6 +50,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["sensor_id"], name: "sensor_list_sensor_id_uindex", unique: true, using: :btree
   end
 
+  create_table "user_auth", id: false, force: :cascade do |t|
+    t.bigint "responder_id"
+    t.text   "email"
+    t.text   "p_hash"
+    t.text   "salt"
+    t.text   "local_hash"
+  end
+
   create_table "vehicle", primary_key: "vehicle_id", id: :bigint, force: :cascade do |t|
     t.text "plate_num"
     t.text "v_type"
@@ -43,6 +68,22 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["vehicle_id"], name: "vehicle_vehicle_id_uindex", unique: true, using: :btree
   end
 
+  create_table "vehicle_node", id: false, force: :cascade do |t|
+    t.bigint  "vehicle_id"
+    t.text    "sensor_id"
+    t.integer "n_time"
+    t.float   "lat"
+    t.float   "long"
+    t.integer "status",     limit: 2
+  end
+
+  add_foreign_key "authorization_level", "responder", primary_key: "responder_id", name: "authorization_level_responder_responder_id_fk"
+  add_foreign_key "authorization_level", "sensor_list", column: "org_id", primary_key: "org_id", name: "authorization_level_sensor_list_org_id_fk"
+  add_foreign_key "responder_node", "responder", primary_key: "responder_id", name: "responder_node_responder_responder_id_fk"
+  add_foreign_key "responder_node", "sensor_auth", column: "sensor_id", primary_key: "sensor_id", name: "responder_node_sensor_auth_sensor_id_fk"
   add_foreign_key "sensor_auth", "sensor_list", column: "org_id", primary_key: "org_id", name: "sensor_auth_sensor_list_org_id_fk"
   add_foreign_key "sensor_list", "sensor_auth", column: "sensor_id", primary_key: "sensor_id", name: "sensor_list_sensor_auth_sensor_id_fk"
+  add_foreign_key "user_auth", "responder", primary_key: "responder_id", name: "user_auth_responder_responder_id_fk"
+  add_foreign_key "vehicle_node", "sensor_auth", column: "sensor_id", primary_key: "sensor_id", name: "vehicle_node_sensor_auth_sensor_id_fk"
+  add_foreign_key "vehicle_node", "vehicle", primary_key: "vehicle_id", name: "vehicle_node_vehicle_vehicle_id_fk"
 end
