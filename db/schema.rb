@@ -21,4 +21,28 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "medical_hist"
   end
 
+  create_table "sensor_auth", primary_key: "sensor_id", id: :text, force: :cascade do |t|
+    t.bigint "org_id"
+    t.bigint "sensor_password"
+    t.index ["sensor_id"], name: "sensor_auth_sensor_id_uindex", unique: true, using: :btree
+  end
+
+  create_table "sensor_list", primary_key: "org_id", id: :bigint, force: :cascade do |t|
+    t.text "sensor_id", null: false
+    t.index ["org_id"], name: "sensor_list_org_key_uindex", unique: true, using: :btree
+    t.index ["sensor_id"], name: "sensor_list_sensor_id_uindex", unique: true, using: :btree
+  end
+
+  create_table "vehicle", primary_key: "vehicle_id", id: :bigint, force: :cascade do |t|
+    t.text "plate_num"
+    t.text "v_type"
+    t.text "make"
+    t.text "model"
+    t.text "color"
+    t.text "equipment"
+    t.index ["vehicle_id"], name: "vehicle_vehicle_id_uindex", unique: true, using: :btree
+  end
+
+  add_foreign_key "sensor_auth", "sensor_list", column: "org_id", primary_key: "org_id", name: "sensor_auth_sensor_list_org_id_fk"
+  add_foreign_key "sensor_list", "sensor_auth", column: "sensor_id", primary_key: "sensor_id", name: "sensor_list_sensor_auth_sensor_id_fk"
 end
