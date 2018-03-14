@@ -24,7 +24,7 @@ mymap.locate({
 function onLocationFound(e) {
     var radius = e.accuracy/2;
 
-    L.circle(e.latlng, 4).addTo(mymap);
+    L.circle(e.latlng, 16).addTo(mymap);
 
     L.circle(e.latlng, 1).addTo(mymap);
 }
