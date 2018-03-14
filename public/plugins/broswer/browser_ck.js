@@ -1,1 +1,4 @@
-if (typeof window.orientation !== 'undefined') { window.location.href = "http://www.google.com";}
+if (typeof window.orientation !== 'undefined')
+{
+
+}
