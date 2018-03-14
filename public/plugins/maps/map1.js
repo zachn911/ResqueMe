@@ -30,3 +30,7 @@ function onLocationFound(e) {
 }
 
 mymap.on('locationfound', onLocationFound);
+
+var la = 33.215;
+var lo = -97.1331;
+L.marker([la, lo]).addTo(mymap);
