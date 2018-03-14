@@ -1,7 +1,7 @@
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(function(position){
-    latitude = position.coords.latitude
-    longitude = position.coords.longitude
+    posiLat = position.coords.latitude
+    posiLong = position.coords.longitude
     });
 
 }else {
