@@ -34,3 +34,8 @@ mymap.on('locationfound', onLocationFound);
 var la = 33.215;
 var lo = -97.1331;
 L.marker([la, lo]).addTo(mymap);
+
+mymap.on('click', function(e) {
+    L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+    marker.bindPopup('This is at: ' + lat + ', ' + lng).openPopup();
+} );
