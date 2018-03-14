@@ -1,5 +1,7 @@
 <% content_for :before_scripts do %>
-<link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/plugins/leaflet/leaflet.css"
+  <link rel="stylesheet" href="/plugins/leaflet/maps.css"
+  <script src="/plugins/leaflet/leaflet.js"</script>
 <% end %>
 
 <div class="content-wrapper dashboard-page">
@@ -19,7 +21,7 @@
         <div class= "col-sm-3" style="left: 15px; top: 15px;">
           <div class="box" style="height: 97vh; overflow: auto">
             <div class="list-group">
-              <a class="list-group-item list-group-item-action active"> Responders </a>
+              <a class="list-group-item list-group-item-action active"> Vehicle </a>
               <button type="button" class="list-group-item list-group-item-action">Zach Newman</button>
               <button type="button" class="list-group-item list-group-item-action">Bill Dick</button>
               <button type="button" class="list-group-item list-group-item-action">What are those</button>
