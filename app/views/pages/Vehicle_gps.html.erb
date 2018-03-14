@@ -1,5 +1,7 @@
 <% content_for :before_scripts do %>
-<link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/plugins/leaflet/leaflet.css"
+  <link rel="stylesheet" href="/plugins/leaflet/maps.css"
+  <script src="/plugins/leaflet/leaflet.js"</script>
 <% end %>
 
 <div class="content-wrapper dashboard-page">
@@ -15,6 +17,25 @@
   </section>
   <!-- Main content -->
   <section class="content">
+      <div class="row">
+        <div class= "col-sm-3" style="left: 15px; top: 15px;">
+          <div class="box" style="height: 97vh; overflow: auto">
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action active"> Vehicle </a>
+              <button type="button" class="list-group-item list-group-item-action">Zach Newman</button>
+              <button type="button" class="list-group-item list-group-item-action">Bill Dick</button>
+              <button type="button" class="list-group-item list-group-item-action">What are those</button>
+            </div>
+          </div>
+        </div>
+        <div class= "col-sm-9" style="top: 15px; left: -15px;">
+          <div id="mapid" style="height:97vh;box-shadow: 5px 5px 10px lightgray">
+
+          </div>
+        </div>
+      </div>
+
+      <script src="/plugins/maps/vMap.js"></script>
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
