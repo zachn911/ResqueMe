@@ -28,6 +28,9 @@ mymap.locate({
 
 function onLocationFound(e) {
     var radius = e.accuracy/2;
+
+  //  var marker = L.marker([xx.xx, yy.yy]).addTo(map);
+
  /*
     var markerLocation = new L.LatLng(e.latlng)
         //Extend the Default marker class
