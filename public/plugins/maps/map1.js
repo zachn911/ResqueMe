@@ -34,7 +34,7 @@ function onLocationFound(e) {
 mymap.on('locationfound', onLocationFound);
 
 var la = 32.19;
-var lo = --93.81;
+var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
