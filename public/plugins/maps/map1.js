@@ -9,7 +9,7 @@ if (navigator.geolocation) {
     alert("Geolocation API is not supported in your browser. :(");
 }
 */
-var mymap = L.map('mapid').setView([31.2, -91.1],14);
+var mymap = L.map('mapid').setView([33.21, -97.13],14);
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 20,
@@ -27,16 +27,36 @@ function onLocationFound(e) {
     var radius = e.accuracy/2;
     mymap.setZoom(16);
     L.circle(e.latlng, 30).addTo(mymap);
-
     L.circle(e.latlng, 1).addTo(mymap);
 }
-
 mymap.on('locationfound', onLocationFound);
 
 var la = 32.19;
 var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
+
+
+
+var myIcon = L.Icon.extend({
+    options: {
+        iconSize: [60, 60]
+    }
+});
+
+var skullIcon = new myIcon({iconUrl: '/images/skull-icon.png'});
+L.marker([33.21, -97.13], {icon: skullIcon}).addTo(map).bindPopup("I am a skull.");
+/*
+var SkullIcon = L.Icon.Default.extend({
+    options: {
+        iconUrl: 'skull-icon.png'
+    }
+});
+
+var skullIcon = new SkullIcon();
+*/
+
+
 
 /*
 mymap.on('click', function(e) {
