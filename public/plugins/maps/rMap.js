@@ -21,3 +21,4 @@ function onLocationFound(e) {
 }
 
 mymap.on('locationfound', onLocationFound);
+
