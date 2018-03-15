@@ -36,34 +36,23 @@ var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
-
-var skull = L.icon({
+/*
+var skullIcon = L.icon({
     iconUrl: '/plugins/leaflet/images/skull-icon.png',
     iconSize: [60,60],
-    iconAnchor: [0,0],
-    popupAnchor: [-3, -76]
+    iconAnchor: [0,0]
+    //popupAnchor: [-3, -76]
 });
 
-L.marker([33.21, -97.13], {icon: skull}).addTo(mymap);
-
-/*
-var myIcon = L.Icon.extend({
-    options: {
-        iconSize: [60, 60]
-    }
-});
-
-var skullIcon = new myIcon({iconUrl: 'skull.png'});
-L.marker([33.21, -97.13], {icon: skullIcon}).addTo(map).bindPopup("I am a skull.");*/
-/*
-var SkullIcon = L.Icon.Default.extend({
-    options: {
-        iconUrl: 'skull-icon.png'
-    }
-});
-
-var skullIcon = new SkullIcon();
+L.marker([33.21, -97.13], {icon: skullIcon}).addTo(mymap);
 */
+
+var myIcon = L.Icon.extend({
+        iconSize: [60, 60]
+});
+
+var skullIcon = new myIcon({iconUrl: '/plugins/leaflet/images/skull-icon.png'});
+L.marker([33.21, -97.13], {icon: skullIcon}).bindPopup("I am a skull.").addTo(mymap);
 
 
 
