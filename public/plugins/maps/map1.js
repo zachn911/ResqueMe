@@ -44,8 +44,8 @@ var myIcon = L.Icon.extend({
     }
 });
 
-var skullIcon = new myIcon({iconUrl: '/images/skull-icon.png'});
-L.marker([33.21, -97.13], {icon: skullIcon}).addTo(map).bindPopup("I am a skull.");
+var skullIcon = new myIcon({iconUrl: '/../../../public/plugins/leaflet/images/skull-icon.png'});
+L.marker([33.21, -97.13], {icon: skullIcon}).bindPopup("I am a skull.").addTo(mymap);
 /*
 var SkullIcon = L.Icon.Default.extend({
     options: {
