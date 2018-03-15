@@ -18,7 +18,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/
 }).addTo(mymap);
 
 mymap.locate({
-    watch: true,
+    watch: false,
     setView: true,
     enableHighAccuracy: true
 })
