@@ -17,8 +17,31 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/
     accessToken: 'pk.eyJ1IjoicmVzcXVlbWUiLCJhIjoiY2pkZG91aDNuMDRsMDJ3bmpnOGJpNGNlNyJ9.hwp2QeD6easWjlAlaEIJ2w'
 }).addTo(mymap);
 
+var myIcon = L.Icon.extend({
+    iconSize: [50, 50],
+    popupAnchor:  [30, 0]
+});
+var zombieIcon = new myIcon({iconUrl: '/plugins/leaflet/images/zombie-icon.png'});
+var tsunamiIcon = new myIcon({iconUrl: '/plugins/leaflet/images/tsunami-icon.png'});
+var truckIcon = new myIcon({iconUrl: '/plugins/leaflet/images/truck-icon.png'});
+var treedownIcon = new myIcon({iconUrl: '/plugins/leaflet/images/treedown-icon.png'});
+var tornadoIcon = new myIcon({iconUrl: '/plugins/leaflet/images/tornado-icon.png'});
+var skullIcon = new myIcon({iconUrl: '/plugins/leaflet/images/skull-icon.png'});
+var sarIcon = new myIcon({iconUrl: '/plugins/leaflet/images/sar-icon.png'});
+var policeIcon = new myIcon({iconUrl: '/plugins/leaflet/images/police-icon.png'});
+var personIcon = new myIcon({iconUrl: '/plugins/leaflet/images/person-icon.png'});
+var heloIcon = new myIcon({iconUrl: '/plugins/leaflet/images/helo-icon.png'});
+var floodIcon = new myIcon({iconUrl: '/plugins/leaflet/images/flood-icon.png'});
+var firefighterIcon = new myIcon({iconUrl: '/plugins/leaflet/images/firefighter-icon.png'});
+var fireIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fire-icon.png'});
+var earthquakeIcon = new myIcon({iconUrl: '/plugins/leaflet/images/earthquake-icon.png'});
+var carIcon = new myIcon({iconUrl: '/plugins/leaflet/images/car-icon.png'});
+var boatIcon = new myIcon({iconUrl: '/plugins/leaflet/images/boat-icon.png'});
+var avalancheIcon = new myIcon({iconUrl: '/plugins/leaflet/images/avalanche-icon.png'});
+var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png'});
+
 mymap.locate({
-    watch: false,
+    watch: true,
     setView: true,
     enableHighAccuracy: true
 })
@@ -26,8 +49,9 @@ mymap.locate({
 function onLocationFound(e) {
     var radius = e.accuracy/2;
     mymap.setZoom(16);
-    L.circle(e.latlng, 30).addTo(mymap);
-    L.circle(e.latlng, 1).addTo(mymap);
+ //   L.circle(e.latlng, 30).addTo(mymap);
+ //   L.circle(e.latlng, 1).addTo(mymap);
+    L.marker(e.latlng, {icon: personIcon}).addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
 
@@ -36,22 +60,6 @@ var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
-/*
-var skullIcon = L.icon({
-    iconUrl: '/plugins/leaflet/images/skull-icon.png',
-    iconSize: [60,60],
-    iconAnchor: [0,0]
-    //popupAnchor: [-3, -76]
-});
-
-L.marker([33.21, -97.13], {icon: skullIcon}).addTo(mymap);
-*/
-
-var myIcon = L.Icon.extend({
-        iconSize: [60, 60]
-});
-
-var skullIcon = new myIcon({iconUrl: '/plugins/leaflet/images/skull-icon.png'});
 L.marker([33.21, -97.13], {icon: skullIcon}).bindPopup("I am a skull.").addTo(mymap);
 
 
