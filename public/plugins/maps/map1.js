@@ -17,8 +17,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/
     accessToken: 'pk.eyJ1IjoicmVzcXVlbWUiLCJhIjoiY2pkZG91aDNuMDRsMDJ3bmpnOGJpNGNlNyJ9.hwp2QeD6easWjlAlaEIJ2w'
 }).addTo(mymap);
 
-//mymap.panTo([posiLat, posiLong]);
-
 mymap.locate({
     watch: false,
     setView: true,
@@ -35,10 +33,10 @@ function onLocationFound(e) {
 
 mymap.on('locationfound', onLocationFound);
 
-var la = 33.215;
-var lo = -97.1331;
+var la = 32.19;
+var lo = --93.81;
 marker = L.marker([la, lo]).addTo(mymap);
-marker.bindPopup('This is at: ' + la + ', ' + lo);
+marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
 /*
 mymap.on('click', function(e) {
