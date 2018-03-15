@@ -1,10 +1,3 @@
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-    });
-
-}else {
-    alert("Geolocation API is not supported in your browser. :(");
-}
 
 var mymap = L.map('mapid').setView([31.2, -91.1],14);
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
