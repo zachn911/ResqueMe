@@ -7,13 +7,3 @@
 //= require custom/tree-menu
 //= require main
 //= require leaflet
-//var text;
-//var favDrink = prompt("Enter password:");
-//switch(favDrink) {
-//    case "aaaaaaaaaaaaa":
-//        text = "Excellent choice!";
-//        break;
-//    default:
-//        window.location.replace("http://www.misterfixit.com/lastpage.html");
-//        break;
-//}
