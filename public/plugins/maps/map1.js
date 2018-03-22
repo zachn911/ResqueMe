@@ -18,7 +18,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/
 }).addTo(mymap);
 
 var myIcon = L.Icon.extend({
-    iconSize: [50, 50],
+    iconSize: [20, 20],
     popupAnchor:  [30, 0]
 });
 var zombieIcon = new myIcon({iconUrl: '/plugins/leaflet/images/zombie-icon.png'});
@@ -41,7 +41,7 @@ var avalancheIcon = new myIcon({iconUrl: '/plugins/leaflet/images/avalanche-icon
 var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png'});
 
 mymap.locate({
-    watch: true,
+    watch: false,
     setView: true,
     enableHighAccuracy: true
 })
@@ -49,9 +49,8 @@ mymap.locate({
 function onLocationFound(e) {
     var radius = e.accuracy/2;
     mymap.setZoom(16);
- //   L.circle(e.latlng, 30).addTo(mymap);
- //   L.circle(e.latlng, 1).addTo(mymap);
-    L.marker(e.latlng, {icon: personIcon}).addTo(mymap);
+    L.circle(e.latlng, 30).addTo(mymap);
+    L.circle(e.latlng, 1).addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
 
