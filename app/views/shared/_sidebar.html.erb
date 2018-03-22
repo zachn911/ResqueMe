@@ -18,31 +18,31 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <%= link_to page_path(page: "active_responders"), data: {pjax: true} do %>
+            <%= link_to acr_path(acr: "index"), data: {pjax: true} do %>
               <i class="fa fa-user"></i>
               Active Responders
             <%end%>
           </li>
           <li>
-            <%= link_to page_path(page: "responder_gpsm"), data: {pjax: true} do %>
+            <%= link_to rgps_path(rgps: "index"), data: {pjax: true} do %>
               <i class="fa fa-compass"></i>
               Responders GPS
             <%end%>
           </li>
           <li>
-            <%= link_to page_path(page: "vehicle_gps"), data: {pjax: true} do %>
+            <%= link_to vgps_path(vgps: "index"), data: {pjax: true} do %>
               <i class="fa fa-car"></i>
               Vehicle GPS
             <%end%>
           </li>
           <li>
-            <%= link_to page_path(page: "overview_map"), data: {pjax: true} do %>
+            <%= link_to omap_path(omap: "index"), data: {pjax: true} do %>
               <i class="fa fa-map"></i>
               Overview Map
             <%end%>
           </li>
           <li>
-            <%= link_to page_path(page: "Stats"), data: {pjax: true} do %>
+            <%= link_to stat_path(stat: "index"), data: {pjax: true} do %>
               <i class="fa fa-table"></i>
               Stats
             <%end%>
@@ -58,14 +58,14 @@
       </li>
 
       <li>
-        <%= link_to page_path(page: "about"), data: { pjax: true} do %>
+        <%= link_to a_path(a: "index"), data: { pjax: true} do %>
           <i class="fa fa-info-circle"></i>
           <span>About</span>
         <% end %>
       </li>
 
       <li>
-        <%= link_to page_path(page: "Settings_org"), data: { pjax: true} do %>
+        <%= link_to so_path(so: "index"), data: { pjax: true} do %>
           <i class="fa fa-gears"></i>
           <span>Settings</span>
         <% end %>

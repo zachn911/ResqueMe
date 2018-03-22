@@ -7,7 +7,6 @@
 //= require custom/tree-menu
 //= require main
 //= require leaflet
-alert ('This site is still in production release date will be mid May 2018');
 //var text;
 //var favDrink = prompt("Enter password:");
 //switch(favDrink) {
