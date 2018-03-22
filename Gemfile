@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'less-rails', '~> 2.7.0'
 gem 'leaflet-rails'
-gem 'rbnacl-libsodium'
+gem 'sprockets'
 
 group :development, :test do
   gem 'byebug'
