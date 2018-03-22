@@ -41,8 +41,8 @@ function onLocationFound(e) {
      //  mymap.setZoom(16);
      //  L.circle(e.latlng, 30).addTo(mymap);
      //  L.circle(e.latlng, 1).addTo(mymap);
-    mymap.panTo({e.latlng});
-    L.marker(e.latlng, {icon: personIcon}).bindPopup("Current location.").addTo(mymap);
+    mymap.panTo(e.latlng);
+    L.marker(e.latlng, {icon: circleIcon}).bindPopup("Current location.").addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
 

@@ -1,14 +1,3 @@
-/*
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-        posiLat = position.coords.latitude
-        posiLong = position.coords.longitude
-    });
-
-}else {
-    alert("Geolocation API is not supported in your browser. :(");
-}
-*/
 var mymap = L.map('mapid').setView([33.21, -97.13],14);
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -18,9 +7,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/
 }).addTo(mymap);
 
 var myIcon = L.Icon.extend({
-    iconSize: [20, 20],
+    iconSize: [10, 10],
     popupAnchor:  [30, 0]
 });
+
 var zombieIcon = new myIcon({iconUrl: '/plugins/leaflet/images/zombie-icon.png'});
 var tsunamiIcon = new myIcon({iconUrl: '/plugins/leaflet/images/tsunami-icon.png'});
 var truckIcon = new myIcon({iconUrl: '/plugins/leaflet/images/truck-icon.png'});
@@ -39,18 +29,20 @@ var carIcon = new myIcon({iconUrl: '/plugins/leaflet/images/car-icon.png'});
 var boatIcon = new myIcon({iconUrl: '/plugins/leaflet/images/boat-icon.png'});
 var avalancheIcon = new myIcon({iconUrl: '/plugins/leaflet/images/avalanche-icon.png'});
 var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png'});
+var circleIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fa-dot-circle.png'});
 
 mymap.locate({
     watch: false,
-    setView: true,
+    setView: false,
     enableHighAccuracy: true
 })
 
 function onLocationFound(e) {
-    var radius = e.accuracy/2;
-    mymap.setZoom(16);
-    L.circle(e.latlng, 30).addTo(mymap);
-    L.circle(e.latlng, 1).addTo(mymap);
+    //  mymap.setZoom(16);
+    //  L.circle(e.latlng, 30).addTo(mymap);
+    //  L.circle(e.latlng, 1).addTo(mymap);
+    mymap.panTo(e.latlng);
+    L.marker(e.latlng, {icon: circleIcon}).bindPopup("Current location.").addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
 
@@ -59,7 +51,7 @@ var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
-L.marker([33.21, -97.13], {icon: skullIcon}).bindPopup("I am a skull.").addTo(mymap);
+L.marker([33.21, -97.13], {icon: skullIcon}, {riseOnHover: true}).bindPopup("I am a skull.").addTo(mymap);
 
 
 
