@@ -51,7 +51,7 @@ var lo = -93.81;
 marker = L.marker([la, lo]).addTo(mymap);
 marker.bindPopup('The hometown of Charla: ' + la + ', ' + lo);
 
-L.marker([33.21, -97.13], {icon: skullIcon}, {riseOnHover: true}).bindPopup("I am a skull.").addTo(mymap);
+L.marker([33.21, -97.13], {icon: skullIcon}, {riseOnHover: true}).bindPopup("Toxic Spill.").addTo(mymap);
 
 
 
