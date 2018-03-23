@@ -1,3 +1,0 @@
-class Vehiclegps < ApplicationRecord
-
-end
