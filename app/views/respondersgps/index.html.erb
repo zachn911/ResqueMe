@@ -34,9 +34,9 @@
                   </span>
                 </div>
               </form>
-              <button type="button" class="list-group-item list-group-item-action" style="text-align: center">Zach Newman</button>
-              <button type="button" class="list-group-item list-group-item-action" style="text-align: center">Bill Dick</button>
-              <button type="button" class="list-group-item list-group-item-action" style="text-align: center">What are those</button>
+              <% Responder.all.each do |responder| %>
+              <button type="button" class="list-group-item list-group-item-action" style="text-align: center"><%= responder.r_name%></button>
+              <%end%>
             </div>
           </div>
         </div>
@@ -47,7 +47,6 @@
       </div>
     </div>
   </div>
-
     <script src="/plugins/maps/mapBase.js"></script>
     <script src="/plugins/maps/rMap.js"></script>
 
