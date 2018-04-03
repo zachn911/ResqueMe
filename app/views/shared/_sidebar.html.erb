@@ -3,7 +3,7 @@
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
       <li>
-        <%= link_to root_path, data: { pjax: true} do %>
+        <%= link_to dash_path(dash: "index"), data: { pjax: true} do %>
           <i class="fa fa-pie-chart"></i>
           <span>Dashboard</span>
         <% end %>

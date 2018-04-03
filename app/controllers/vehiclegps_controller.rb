@@ -4,6 +4,7 @@ class VehiclegpsController < ApplicationController
     render template: "vehiclegps/#{params[:vgps]}"
   end
   def index
+    @vehicle = Vehicle.all
   end
 
 
