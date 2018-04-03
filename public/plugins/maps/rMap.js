@@ -18,7 +18,7 @@ mymap.on('locationfound', onLocationFound);
 
         var time = $('#res-info'+i).data('time');
 
-        L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Name\nLast update: ' + time);
+        L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Name<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
         }
 
 
