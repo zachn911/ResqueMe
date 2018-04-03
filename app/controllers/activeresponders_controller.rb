@@ -4,6 +4,7 @@ class ActiverespondersController < ApplicationController
     render template: "activeresponders/#{params[:acr]}"
   end
   def index
+    @responder = Responder.all
   end
 
 
