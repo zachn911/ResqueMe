@@ -30,3 +30,16 @@ var boatIcon = new myIcon({iconUrl: '/plugins/leaflet/images/boat-icon.png'});
 var avalancheIcon = new myIcon({iconUrl: '/plugins/leaflet/images/avalanche-icon.png'});
 var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png'});
 var circleIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fa-dot-circle.png'});
+
+mymap.locate({
+    watch: false,
+    setView: false,
+    enableHighAccuracy: true
+})
+
+function onLocationFound(e) {
+    mymap.panTo(e.latlng);
+    L.marker(e.latlng, {icon: circleIcon}).bindPopup("Current location.").addTo(mymap);
+}
+
+mymap.on('locationfound', onLocationFound);

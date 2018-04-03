@@ -53,8 +53,9 @@
       <%= respondern.lat %>
       <%= respondern.long %>
 
-    <div id="res-info"data-lat="<%= respondern.lat %>"data-long="<%= respondern.long %>"data-indx="<%= index +1 %>">
+    <div id="res-info<%= index +1 %>"data-lat="<%= respondern.lat %>"data-long="<%= respondern.long %>">
     </div>
+
     <%end%>
 
     <script src="/plugins/maps/mapBase.js"></script>
