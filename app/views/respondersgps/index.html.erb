@@ -49,9 +49,12 @@
     </div>
   </div>
 
-    <% Respondernode.all.each do |respondern| %>
+    <% Respondernode.all.each_with_index do |respondern, index| %>
       <%= respondern.lat %>
       <%= respondern.long %>
+
+    <div id="res-info"data-lat="<%= respondern.lat %>"data-long="<%= respondern.long %>"data-indx="<%= index +1 %>">
+    </div>
     <%end%>
 
     <script src="/plugins/maps/mapBase.js"></script>
