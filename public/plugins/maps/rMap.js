@@ -11,12 +11,14 @@ function onLocationFound(e) {
 }
 mymap.on('locationfound', onLocationFound);
 
-   // var myEle =  document.getElementById("res-info1");
    var i;
    for (i = 1; i < 10000; i++){
         var lt = $('#res-info'+i).data('lat');
         var lo = $('#res-info'+i).data('long');
-        L.marker([lt, lo]).addTo(mymap).bindPopup("popup");
+
+        var time = $('#res-info'+i).data('time');
+
+        L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Name\nLast update: ' + time);
         }
-//alert("Testing!");
+
 
