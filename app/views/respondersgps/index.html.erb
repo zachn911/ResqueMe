@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-
+    <script src="/plugins/maps/mapBase.js"></script>
     <% Respondernode.all.each_with_index do |respondern, index| %>
       <%= respondern.lat %>
       <%= respondern.long %>
@@ -58,8 +58,8 @@
 
     <%end%>
 
-    <script src="/plugins/maps/mapBase.js"></script>
     <script src="/plugins/maps/rMap.js"></script>
+
 
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
