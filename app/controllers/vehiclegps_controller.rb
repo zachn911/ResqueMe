@@ -5,6 +5,7 @@ class VehiclegpsController < ApplicationController
   end
   def index
     @vehicle = Vehicle.all
+    @vehiclenode = Vehiclenode.all
   end
 
 

@@ -47,7 +47,10 @@
         </div>
       </div>
     </div>
-
+    <% Vehiclenode.all.each_with_index do |vehNode,index| %>
+      <div id="res-info<%= index +1 %>"data-lat="<%=vehNode.lat %>"data-long="<%= vehNode.long %>">
+      </div>
+      <%end%>
     <script src="/plugins/maps/mapBase.js"></script>
     <script src="/plugins/maps/vMap.js"></script>
 
