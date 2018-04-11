@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 1) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,11 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "authorization", limit: 2
   end
 
-  create_table "responder_nodes", id: false, force: :cascade do |t|
+  create_table "orgs", primary_key: "org_id", id: :bigint, force: :cascade do |t|
+    t.text "org_name"
+  end
+
+  create_table "respondernodes", id: false, force: :cascade do |t|
     t.bigint  "responder_id"
     t.text    "sensor_id"
     t.integer "n_time"
@@ -39,14 +43,13 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "sensor_auths", primary_key: "sensor_id", id: :text, force: :cascade do |t|
-    t.bigint "org_id"
-    t.bigint "sensor_password"
+    t.text "sensor_password"
     t.index ["sensor_id"], name: "sensor_auth_sensor_id_uindex", unique: true, using: :btree
   end
 
-  create_table "sensor_lists", primary_key: "org_id", id: :bigint, force: :cascade do |t|
-    t.text "sensor_id", null: false
-    t.index ["org_id"], name: "sensor_list_org_key_uindex", unique: true, using: :btree
+  create_table "sensor_lists", id: false, force: :cascade do |t|
+    t.bigint "org_id",    null: false
+    t.text   "sensor_id"
     t.index ["sensor_id"], name: "sensor_list_sensor_id_uindex", unique: true, using: :btree
   end
 
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text   "local_hash"
   end
 
-  create_table "vehicle_nodes", id: false, force: :cascade do |t|
+  create_table "vehiclenodes", id: false, force: :cascade do |t|
     t.bigint  "vehicle_id"
     t.text    "sensor_id"
     t.integer "n_time"
@@ -77,13 +80,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["vehicle_id"], name: "vehicle_vehicle_id_uindex", unique: true, using: :btree
   end
 
+  add_foreign_key "authorization_levels", "orgs", primary_key: "org_id", name: "authorization_level_sensor_list_org_id_fk"
   add_foreign_key "authorization_levels", "responders", primary_key: "responder_id", name: "authorization_level_responder_responder_id_fk"
-  add_foreign_key "authorization_levels", "sensor_lists", column: "org_id", primary_key: "org_id", name: "authorization_level_sensor_list_org_id_fk"
-  add_foreign_key "responder_nodes", "responders", primary_key: "responder_id", name: "responder_node_responder_responder_id_fk"
-  add_foreign_key "responder_nodes", "sensor_auths", column: "sensor_id", primary_key: "sensor_id", name: "responder_node_sensor_auth_sensor_id_fk"
-  add_foreign_key "sensor_auths", "sensor_lists", column: "org_id", primary_key: "org_id", name: "sensor_auth_sensor_list_org_id_fk"
+  add_foreign_key "respondernodes", "responders", primary_key: "responder_id", name: "responder_node_responder_responder_id_fk"
+  add_foreign_key "respondernodes", "sensor_auths", column: "sensor_id", primary_key: "sensor_id", name: "responder_node_sensor_auth_sensor_id_fk"
+  add_foreign_key "sensor_lists", "orgs", primary_key: "org_id", name: "sensor_lists_org_org_id_fk"
   add_foreign_key "sensor_lists", "sensor_auths", column: "sensor_id", primary_key: "sensor_id", name: "sensor_list_sensor_auth_sensor_id_fk"
   add_foreign_key "user_auths", "responders", primary_key: "responder_id", name: "user_auth_responder_responder_id_fk"
-  add_foreign_key "vehicle_nodes", "sensor_auths", column: "sensor_id", primary_key: "sensor_id", name: "vehicle_node_sensor_auth_sensor_id_fk"
-  add_foreign_key "vehicle_nodes", "vehicles", primary_key: "vehicle_id", name: "vehicle_node_vehicle_vehicle_id_fk"
+  add_foreign_key "vehiclenodes", "sensor_auths", column: "sensor_id", primary_key: "sensor_id", name: "vehicle_node_sensor_auth_sensor_id_fk"
+  add_foreign_key "vehiclenodes", "vehicles", primary_key: "vehicle_id", name: "vehicle_node_vehicle_vehicle_id_fk"
 end

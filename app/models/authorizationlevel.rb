@@ -1,4 +1,4 @@
 class  AuthorizationLevel < ApplicationRecord
   belongs_to :responder
-  belongs_to :sensorlist
+  belongs_to :org
 end
