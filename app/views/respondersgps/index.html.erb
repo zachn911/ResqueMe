@@ -50,11 +50,8 @@
   </div>
     <script src="/plugins/maps/mapBase.js"></script>
     <% Respondernode.all.each_with_index do |resNode, index| %>
-      <%= resNode.lat %>
-      <%= resNode.long %>
-
     <div id="res-info<%= index +1 %>" data-lat="<%= resNode.lat %>"
-         data-long="<%= resNode.long %>" data-time="<%= resNode.n_time %>">
+         data-long="<%= resNode.long %>" data-time="<%= resNode.n_time %>"data-time="<%= resNode.r_name %>">
     </div>
 
     <%end%>

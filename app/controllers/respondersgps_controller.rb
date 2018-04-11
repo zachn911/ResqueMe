@@ -5,7 +5,7 @@ class RespondersgpsController < ApplicationController
   end
 
   def index
-      @respondernode = Respondernode.all
+      @respondernode = Respondernode.all :include => [:r_name]
       @responder = Responder.all
   end
 

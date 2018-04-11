@@ -1,6 +1,6 @@
 class SensorList< ApplicationRecord
   self.primary_key = "org_id"
-  has_one :authorizationlevel
-  has_one :sensorauth
+  has_many :authorizationlevel
+  has_many :sensorauth
   belongs_to :sensorauth
 end
