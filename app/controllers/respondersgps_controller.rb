@@ -7,7 +7,6 @@ class RespondersgpsController < ApplicationController
   def index
       @respondernode = Respondernode.all
       @responder = Responder.all
-      
   end
 
 end
