@@ -12,7 +12,7 @@ gem 'rails-controller-testing'
 gem 'activemodel-serializers-xml'
 gem 'record_tag_helper', '~> 1.0'
 gem 'rmre', '~> 0.0.9'
-
+gem 'argon2'
 
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'

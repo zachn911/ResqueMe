@@ -25,6 +25,14 @@ for (i = 1; i < 1000; i++){
             L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
         }
     }
-
 }
-
+/*
+var cliPopup = L.popup();
+function onMapClick(e) {
+    cliPopup
+        .setLatLng(e.latlng)
+        .setContent('You clicked at ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6))
+        .openOn(mymap);
+}
+mymap.on('click', onMapClick);
+*/
