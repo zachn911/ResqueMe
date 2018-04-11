@@ -46,7 +46,8 @@
           </div>
           <% Vehiclenode.all.each_with_index do |vehNode, index| %>
             <div id="veh-info<%= index +1 %>" data-lat="<%=vehNode.lat %>"
-                 data-long="<%= vehNode.long %>" data-time="<%= vehNode.n_time %>">
+                 data-long="<%= vehNode.long %>" data-time="<%= vehNode.n_time %>"
+                 data-type="<%= vehNode.v_type %>">
             </div>
           <%end%>
         </div>

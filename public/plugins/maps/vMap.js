@@ -16,6 +16,18 @@ for (i = 1; i < 10000; i++){
     var lt = $('#veh-info'+i).data('lat');
     var lo = $('#veh-info'+i).data('long');
     var time = $('#veh-info'+i).data('time');
+    var type = $('#veh-info'+i).data('type');
 
-    L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+    if (type == Ambulance) {
+        L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+    } else if (type == Truck) {
+        L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+    } else if (type == Boat) {
+        L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+    } else {
+        L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+    }
+
+
+    //L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).addTo(mymap).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
 }
