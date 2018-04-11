@@ -11,6 +11,18 @@ var myIcon = L.Icon.extend({
     popupAnchor:  [30, 0]
 });
 
+mymap.locate({
+    watch: false,
+    setView: false,
+    enableHighAccuracy: true
+})
+
+function onLocationFound(e) {
+    mymap.panTo(e.latlng);
+    L.marker(e.latlng, {icon: circleIcon}).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6)).addTo(mymap);
+}
+mymap.on('locationfound', onLocationFound);
+
 var zombieIcon = new myIcon({iconUrl: '/plugins/leaflet/images/zombie-icon.png'});
 var tsunamiIcon = new myIcon({iconUrl: '/plugins/leaflet/images/tsunami-icon.png'});
 var truckIcon = new myIcon({iconUrl: '/plugins/leaflet/images/truck-icon.png'});

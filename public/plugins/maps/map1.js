@@ -1,4 +1,4 @@
-
+/*
 mymap.locate({
     watch: false,
     setView: false,
@@ -10,7 +10,7 @@ function onLocationFound(e) {
     L.marker(e.latlng, {icon: circleIcon}).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6)).addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
-
+*/
 //popup on map click
 var cliPopup = L.popup();
 function onMapClick(e) {

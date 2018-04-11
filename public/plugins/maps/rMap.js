@@ -1,4 +1,4 @@
-
+/*
 mymap.locate({
     watch: false,
     setView: false,
@@ -10,7 +10,7 @@ function onLocationFound(e) {
     L.marker(e.latlng, {icon: circleIcon}).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6)).addTo(mymap);
 }
 mymap.on('locationfound', onLocationFound);
-
+*/
 var i;
 for (i = 1; i < 10000; i++){
     var lt = $('#res-info'+i).data('lat');
