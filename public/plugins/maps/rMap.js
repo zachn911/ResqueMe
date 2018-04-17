@@ -12,4 +12,3 @@ for (i = 1; i < 1000; i++) {
         L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
     }
 }
-
