@@ -24,13 +24,12 @@ mymap.locate({
 
 function onLocationFound(e) {
     mymap.panTo(e.latlng);
-    var waldo = L.marker(e.latlng, {icon: circleIcon}).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6));
+    L.marker(e.latlng, {icon: circleIcon}).addTo(mymap).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6));
 }
 mymap.on('locationfound', onLocationFound);
 
 var myIcon = L.Icon.extend({
-    iconSize: [10, 10],
-    popupAnchor:  [30, 0]
+    popupAnchor:  [15, 0]
 });
 
 var zombieIcon = new myIcon({iconUrl: '/plugins/leaflet/images/zombie-icon.png', iconSize: [32, 40], iconAnchor: [16,40]});
@@ -51,5 +50,5 @@ var carIcon = new myIcon({iconUrl: '/plugins/leaflet/images/car-icon.png', iconS
 var boatIcon = new myIcon({iconUrl: '/plugins/leaflet/images/boat-icon.png', iconSize: [32, 40], iconAnchor: [16,40]});
 var avalancheIcon = new myIcon({iconUrl: '/plugins/leaflet/images/avalanche-icon.png', iconSize: [32, 40], iconAnchor: [16,40]});
 var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png', iconSize: [32, 40], iconAnchor: [16,40]});
-var circleIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fa-dot-circle.png', iconSize: [32, 40], iconAnchor: [16,40]});
+var circleIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fa-dot-circle.png', iconSize: [32, 32], iconAnchor: [16,16]});
 
