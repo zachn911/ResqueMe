@@ -7,4 +7,4 @@
 //= require custom/tree-menu
 //= require main
 //= require leaflet
-
+//= require turbolinks

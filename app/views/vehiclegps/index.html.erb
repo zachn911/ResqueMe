@@ -5,57 +5,7 @@
 <% end %>
 
 <div class="content-wrapper dashboard-page">
-  <section class="content-header">
-    <div class="row">
-      <div class="col-sm-6 col-xs-12">
-        <h1 class="page-title">
-          Vehicle GPS
-        </h1>
-
-      </div>
-    </div>
-  </section>
-  <!-- Main content -->
-  <section class="content" style="height: 100vh">
-    <div class="row">
-      <div class= "col-xs-12" style="top: 15px; width: 96%; left:4%">
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="box" style="height: 97vh; overflow: auto">
-              <div class="list-group">
-                <a class="list-group-item list-group-item-action active"> Vehicle: </a>
-                <form action="#" method="get">
-                  <div class="input-group input-group-sm">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </span>
-                  </div>
-                </form>
-                <% Vehicle.all.each do |vehicle| %>
-                  <button type="button" class="list-group-item list-group-item-action" style="text-align: center"><%=vehicle.plate_num%></button>
-                <%end%>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-8" style="left: -30px">
-            <div id="mapid" style="height:97vh;box-shadow: 5px 5px 10px lightgray;">
-            </div>
-          </div>
-          <% Vehiclenode.all.each_with_index do |vehNode, index| %>
-            <div id="veh-info<%= index +1 %>" data-lat="<%=vehNode.lat %>"
-                 data-long="<%= vehNode.long %>" data-time="<%= vehNode.n_time %>"
-                 data-type="<%= vehNode.v_type %>"></div>
-          <%end%>
-        </div>
-      </div>
-    </div>
-
-    <script src="/plugins/maps/mapBaseV.js"></script>
-    <script src="/plugins/maps/vMap.js"></script>
-
-  </section><!-- /.content -->
-</div><!-- /.content-wrapper -->
+  <%= render 'header'%>
+  <%= render 'body' %>
+</div>
 

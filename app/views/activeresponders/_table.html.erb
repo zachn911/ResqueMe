@@ -1,0 +1,96 @@
+<table id="rs_data_td" class="table table-no-bordered">
+  <tr style="background-color: #234ec5; color: white">
+    <th style="width: 10px">Responder</th>
+    <th style="width: 10px">Temp</th>
+    <th style="width: 10px">Heart Rate</th>
+    <th style="width: 10px">Location</th>
+  </tr>
+  <% Respondernode.order(heartrate: :desc).each_with_index do |respondernode,index| %>
+    <tr style="background-color: whitesmoke">
+      <td id="name" style="text-align: center"><%=respondernode.r_name%></td>
+      <td>
+        <div id="temp<%=index +1%>" class="badge bg-warning" data-temp="<%=respondernode.n_temp%>">
+          <%=respondernode.n_temp%>°F
+        </div>
+      </td>
+      <td>
+        <div id="heart<%=index +1%>" class="badge bg-warning" data-heart="<%=respondernode.heartrate%>">
+          <%=respondernode.heartrate%> BPM
+        </div>
+      </td>
+      <td style="text-align: center">
+        <i class="fa fa-street-view"></i><br>
+        <div id="la" style="font-size: 12px; text-align: left">La: <%=respondernode.lat%></div>
+        <div id="lo" style="font-size: 12px; text-align: left">Lo: <%=respondernode.long%></div>
+      </td>
+    </tr>
+  <%end%>
+</table>
+
+<script>
+    var i
+    for(i=1;i<1000;i++) {
+        var t = $('#temp' + i).data('temp');
+        if (t === undefined) {
+            // layerGroup.addTo(mymap)
+            i = 1000;
+        }
+        else {
+            if (t >= 100) {
+                document.getElementById("temp" + i).style.backgroundColor = "red";
+            }
+            else {
+                if (t >= 88) {
+                    document.getElementById("temp" + i).style.backgroundColor = "yellow";
+                    document.getElementById("temp" + i).style.color = "black";
+                }
+                else {
+                    if (t >= 58) {
+                        document.getElementById("temp" + i).style.backgroundColor = "green";
+                    }
+                    else {
+                        if (t >= 40) {
+                            document.getElementById("temp" + i).style.backgroundColor = "yellow";
+                            document.getElementById("temp" + i).style.color = "black";
+                        }
+                        else {
+                            document.getElementById("temp" + i).style.backgroundColor = "red";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    for(i=1;i<1000;i++) {
+        var h = $('#heart' + i).data('heart');
+        if (h === undefined) {
+            // layerGroup.addTo(mymap)
+            i = 1000;
+        }
+        else {
+            if (h >= 180) {
+                document.getElementById("heart" + i).style.backgroundColor = "red";
+            }
+            else {
+                if (h >= 160) {
+                    document.getElementById("heart" + i).style.backgroundColor = "yellow";
+                    document.getElementById("heart" + i).style.color = "black";
+                }
+                else {
+                    if (h >= 70) {
+                        document.getElementById("heart" + i).style.backgroundColor = "green";
+                    }
+                    else {
+                        if (h >= 50) {
+                            document.getElementById("heart" + i).style.backgroundColor = "yellow";
+                            document.getElementById("heart" + i).style.color = "black";
+                        }
+                        else {
+                            document.getElementById("heart" + i).style.backgroundColor = "red";
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
