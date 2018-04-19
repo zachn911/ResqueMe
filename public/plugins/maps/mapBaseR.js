@@ -8,25 +8,25 @@ L.Map.include({
 });
 
 
-var mymap = L.map('mapid').setView([33.21, -97.13],13);
+var rMap = L.map('mapid').setView([33.21, -97.13],13);
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 20,
     id: 'mapbox.satellite-streets',
     accessToken: 'pk.eyJ1IjoicmVzcXVlbWUiLCJhIjoiY2pkZG91aDNuMDRsMDJ3bmpnOGJpNGNlNyJ9.hwp2QeD6easWjlAlaEIJ2w'
-}).addTo(mymap);
+}).addTo(rMap);
 
-mymap.locate({
+rMap.locate({
     watch: false,
     setView: false,
     enableHighAccuracy: true
 });
 
 function onLocationFound(e) {
-    mymap.panTo(e.latlng);
-    L.marker(e.latlng, {icon: circleIcon}).addTo(mymap).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6));
+    rMap.panTo(e.latlng);
+    L.marker(e.latlng, {icon: circleIcon}).addTo(rMap).bindPopup('Current location: ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6));
 }
-mymap.on('locationfound', onLocationFound);
+rMap.on('locationfound', onLocationFound);
 
 var myIcon = L.Icon.extend({
     popupAnchor:  [15, 0]

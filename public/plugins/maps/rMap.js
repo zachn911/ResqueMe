@@ -9,7 +9,7 @@ for (i = 1; i < 1000; i++) {
     if (lt === undefined) {
         i = 1000;
     } else {
-        L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+        L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(rMap).bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
     }
 }
 
