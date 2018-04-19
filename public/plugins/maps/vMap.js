@@ -25,7 +25,7 @@ for (i = 1; i < 1000; i++){
         } else {
             var layer = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
         }
-        layer.addTo(mymap);
+        layer.addTo(vMap);
     }
 }
 /*
