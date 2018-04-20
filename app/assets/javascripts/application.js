@@ -9,3 +9,4 @@
 //= require leaflet
 //= require turbolinks
 //= require live_table
+//= require live_map

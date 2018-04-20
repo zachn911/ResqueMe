@@ -1,5 +1,4 @@
-<div id="mapid" style="height:97vh;box-shadow: 5px 5px 10px lightgray;">
-</div>
+
 <% Respondernode.all.each_with_index do |resNode, index| %>
   <div id="res-info<%= index +1 %>" data-lat="<%= resNode.lat %>"
        data-long="<%= resNode.long %>" data-time="<%= resNode.n_time %>"
