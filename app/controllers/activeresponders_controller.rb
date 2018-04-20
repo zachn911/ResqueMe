@@ -7,5 +7,13 @@ class ActiverespondersController < ApplicationController
     @respondernode = Respondernode.all
   end
 
+  def live_table
+    @respondernode = Respondernode.all
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 end

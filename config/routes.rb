@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :about
   get "settingso/:so" => "settingso#so", as: :so
   resources :settingso
+  get "/activeresponders/live_table" => "activeresponders#live_table"
 end
