@@ -2,7 +2,7 @@
 <% Respondernode.all.each_with_index do |resNode, index| %>
   <div id="res-info<%= index +1 %>" data-lat="<%= resNode.lat %>"
        data-long="<%= resNode.long %>" data-time="<%= resNode.n_time %>"
-       data-name="<%= resNode.r_name %>">
+       data-name="<%= resNode.r_name %>" data-responder_id="<%= resNode.responder_id %>">
   </div>
 <%end%>
 <script>
@@ -62,19 +62,32 @@
 </script>
 <script>
 
-    var mk = [];
-    var i;
+    var resLayer = new L.layerGroup([]);
+    var resArray = [];
+    var i, k;
+
     for (i = 1; i < 1000; i++) {
         var lt = $('#res-info' + i).data('lat');
         var lo = $('#res-info' + i).data('long');
         var name = $('#res-info' + i).data('name');
         var time = $('#res-info' + i).data('time');
+        var rID = $('#res-info' + i).data('responder_id');
+
         if (lt === undefined) {
             i = 1000;
         } else {
-            L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).addTo(mymap).bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
-        }
-    }
+            k = i;
+            rID = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+        }//end
+        resArray.push(rID);
+    }//end for loop
 
+
+    for (i = 1; i < k; i++) {
+        resArray[i].addTo(resLayer);
+    }
+    resLayer.addTo(mymap);
+
+    //resLayer.remove();
 
 </script>

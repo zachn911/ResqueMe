@@ -6,5 +6,6 @@ class Vehiclenode < ApplicationRecord
   delegate :model, :to => :vehicle
   delegate :color, :to => :vehicle
   delegate :equipment, :to => :vehicle
+  delegate :plate_num, :to => :vehicle
   belongs_to :sensorauth
 end
