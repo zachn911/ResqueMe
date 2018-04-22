@@ -7,7 +7,7 @@ class ActiverespondersController < ApplicationController
     @respondernode = Respondernode.all
   end
 
-  def live_table
+  def live_update
     @respondernode = Respondernode.all
 
     respond_to do |format|

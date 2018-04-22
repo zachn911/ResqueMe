@@ -10,7 +10,7 @@ class RespondersgpsController < ApplicationController
       @responder = Responder.all
   end
 
-  def live_map
+  def live_update
     @respondernode = Respondernode.all
 
     respond_to do |format|
