@@ -3,7 +3,8 @@
 <% Vehiclenode.all.each_with_index do |vehNode, index| %>
   <div id="veh-info<%= index +1 %>" data-lat="<%=vehNode.lat %>"
        data-long="<%= vehNode.long %>" data-time="<%= vehNode.n_time %>"
-       data-type="<%= vehNode.v_type %>"></div>
+       data-type="<%= vehNode.v_type %>" data-make="<%= vehNode.make %>"
+       data-model="<%= vehNode.model %>" data-vehicle_id="<%= vehNode.vehicle_id %>"></div>
 <%end%>
 <script>
     L.Map.include({
@@ -59,46 +60,57 @@
     var ambulanceIcon = new myIcon({iconUrl: '/plugins/leaflet/images/ambulance-icon.png', iconSize: [36, 40], iconAnchor: [18,40]});
     var circleIcon = new myIcon({iconUrl: '/plugins/leaflet/images/fa-dot-circle.png', iconSize: [32, 32], iconAnchor: [16,16]});
 </script>
+
+
 <script>
 
-    var i;
+  var vehLayer = new L.layerGroup([]);
+  var vehArray = [];
+  var i, k;
+
     for (i = 1; i < 1000; i++){
         var lt = $('#veh-info'+i).data('lat');
         var lo = $('#veh-info'+i).data('long');
         var time = $('#veh-info'+i).data('time');
         var type = $('#veh-info'+i).data('type');
+        var make = $('#veh-info'+1).data('make');
+        var model = $('#veh-info'+1).data('model');
+        var vID = $('#veh-info'+1).data('vehicle_id');
 
         if (lt === undefined) {
-            // layerGroup.addTo(mymap)
             i = 1000;
         } else {
+            k = i;
             if (type == 'ambulance') {
-                var layer = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else if (type == 'truck') {
-                var layer = L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else if (type == 'boat') {
-                var layer = L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else if (type == 'firefighter') {
-                var layer = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else if (type == 'police') {
-                var layer = L.marker([lt, lo], {icon: policeIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: policeIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else if (type == 'helo') {
-                var layer = L.marker([lt, lo], {icon: heloIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: heloIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             } else {
-                var layer = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).bindPopup('Make<br>Model<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                vID = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).bindPopup('Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             }
-            layer.addTo(mymap);
-        }
-    }
-    /*
-    var cliPopup = L.popup();
-    function onMapClick(e) {
-        cliPopup
-            .setLatLng(e.latlng)
-            .setContent('You clicked at ' + e.latlng.lat.toPrecision(6) + ', ' + e.latlng.lng.toPrecision(6))
-            .openOn(mymap);
-    }
-    mymap.on('click', onMapClick);
-    */
+            //vID.addTo(mymap);
+            vehArray.push(vID);
+        }//end else
+
+    }//end for
+
+  for (i = 1; i <k; i++) {
+      vehArray[i].addTo(vehLayer);
+  }
+  vehLayer.addTo(mymap);
+  //***zach the following line removes the layer of icons from the map,
+  //may need to put the whole section above (the for loop) into a function
+  //depending on how you plan on calling this
+
+  //vehLayer.remove();
+
 
 </script>
