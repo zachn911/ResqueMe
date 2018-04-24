@@ -7,13 +7,11 @@
 <%end%>
 
 <script>
+    resLayer.clearLayers();
 
-
-    //var resLayer = L.layerGroup([]);
     var resArray = [];
     resArray.length = 0;
-    var rIDarray =[];
-    rIDarray.length = 0;
+
     var i, marker;
 
     for (i = 1; i < 1000; i++) {
@@ -29,37 +27,16 @@
             marker = L.marker([lt, lo], {icon: firefighterIcon}, {myCustomId: rID}, {riseOnHover: true});
             marker.bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             marker.addTo(resLayer);
-            var temp = L.stamp(resLayer);
-            //rIDarray.push(temp);
         }//end
         resArray.push(marker);
     }//end for loop
 
-
-/*
-    for (i = 0; i < rIDarray.length; i++) {
-        if (mymap.hasLayer(rIDarray)) {
-            mymap.removeLayer(rIDarray[i]);
-        }
-        //mymap.removeLayer(rIDarray[i]);
-        //mymap.update(resArray[i]);
-        //resArray[i].remove(mymap);
-    }
-    */
-
-
-
     $(document).ready(function () {
         resLayer.addTo(mymap);
     });
-   // mymap.update(resLayer);
 
-    //alert(temp);
-    //mymap.removeLayer(temp);
     if (resLayer) {
         resLayer.update();
     }
-    //L.stamp(obj)
-    //resLayer.remove();
-    mymap.removeLayer(resLayer);
+
 </script>
