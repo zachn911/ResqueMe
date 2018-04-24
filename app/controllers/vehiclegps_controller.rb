@@ -8,5 +8,12 @@ class VehiclegpsController < ApplicationController
     @vehiclenode = Vehiclenode.all
   end
 
+  def live_update
+    @vehiclenode = Vehiclenode.all
+
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end
