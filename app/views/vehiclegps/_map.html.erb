@@ -1,5 +1,3 @@
-<div id="mapid" style="height:97vh;box-shadow: 5px 5px 10px lightgray;">
-</div>
 <% Vehiclenode.all.each_with_index do |vehNode, index| %>
   <div id="veh-info<%= index +1 %>" data-lat="<%=vehNode.lat %>"
        data-long="<%= vehNode.long %>" data-time="<%= vehNode.n_time %>"
