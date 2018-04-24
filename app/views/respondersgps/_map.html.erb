@@ -9,9 +9,6 @@
 <script>
     resLayer.clearLayers();
 
-    var resArray = [];
-    resArray.length = 0;
-
     var i, marker;
 
     for (i = 1; i < 1000; i++) {
@@ -28,15 +25,11 @@
             marker.bindPopup(name + '<br>Organization<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
             marker.addTo(resLayer);
         }//end
-        resArray.push(marker);
+
     }//end for loop
 
     $(document).ready(function () {
         resLayer.addTo(mymap);
     });
-
-    if (resLayer) {
-        resLayer.update();
-    }
 
 </script>

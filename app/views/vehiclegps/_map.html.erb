@@ -9,10 +9,11 @@
 
 
 <script>
+    vehLayer.clearLayers();
 
-  var vehLayer = new L.layerGroup([]);
-  var vehArray = [];
-  var i, k;
+    var vehArray = [];
+    vehArray.length = 0;
+    var i, marker;
 
     for (i = 1; i < 1000; i++){
         var lt = $('#veh-info'+i).data('lat');
@@ -28,35 +29,29 @@
         } else {
             k = i;
             if (type == 'ambulance') {
-                vID = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true});
             } else if (type == 'truck') {
-                vID = L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true});
             } else if (type == 'boat') {
-                vID = L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true});
             } else if (type == 'firefighter') {
-                vID = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true});
             } else if (type == 'police') {
-                vID = L.marker([lt, lo], {icon: policeIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: policeIcon}, {riseOnHover: true});
             } else if (type == 'helo') {
-                vID = L.marker([lt, lo], {icon: heloIcon}, {riseOnHover: true}).bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: heloIcon}, {riseOnHover: true});
             } else {
-                vID = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true}).bindPopup('Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+                marker = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true});
             }
-            //vID.addTo(mymap);
-            vehArray.push(vID);
+            marker.bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+            marker.addTo(vehLayer);
         }//end else
 
     }//end for
 
-  for (i = 0; i < vehArray.length; i++) {
-      vehArray[i].addTo(vehLayer);
-  }
-  vehLayer.addTo(mymap);
-  //***zach the following line removes the layer of icons from the map,
-  //may need to put the whole section above (the for loop) into a function
-  //depending on how you plan on calling this
-
-  //vehLayer.remove();
+    $(document).ready(function () {
+        vehLayer.addTo(mymap);
+    });
 
 
 </script>

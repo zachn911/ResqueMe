@@ -10,3 +10,4 @@
 //= require turbolinks
 //= require live_update
 var resLayer = L.layerGroup([]);
+var vehLayer = L.layerGroup([]);
