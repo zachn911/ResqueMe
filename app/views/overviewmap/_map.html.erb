@@ -58,6 +58,67 @@
 </script>
 <script>
 
+    ovrLayer.clearLayers();
+
+    var i, marker;
+
+    for (i = 1; i < 1000; i++) {
+        var lt = $('#ovr-info' + i).data('lat');
+        var lo = $('#ovr-info' + i).data('long');
+        var time = $('#ovr-info' + i).data('time');
+        var type = $('#ovr-info' + i).data('type');
+        var make = $('#ovr-info' + i).data('make');
+        var model = $('#ovr-info' + i).data('model');
+        var vID = $('#ovr-info' + i).data('vehicle_id');
+
+        if (lt === undefined) {
+            i = 1000;
+        } else {
+            if (type == 'ambulance') {
+                marker = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true});
+            } else if (type == 'truck') {
+                marker = L.marker([lt, lo], {icon: truckIcon}, {riseOnHover: true});
+            } else if (type == 'boat') {
+                marker = L.marker([lt, lo], {icon: boatIcon}, {riseOnHover: true});
+            } else if (type == 'firefighter') {
+                marker = L.marker([lt, lo], {icon: firefighterIcon}, {riseOnHover: true});
+            } else if (type == 'police') {
+                marker = L.marker([lt, lo], {icon: policeIcon}, {riseOnHover: true});
+            } else if (type == 'helo') {
+                marker = L.marker([lt, lo], {icon: heloIcon}, {riseOnHover: true});
+            } else if (type == 'avalanche') {
+                marker = L.marker([lt, lo], {icon: avalancheIcon}, {riseOnHover: true});
+            } else if (type == 'fire') {
+                marker = L.marker([lt, lo], {icon: fireIcon}, {riseOnHover: true});
+            } else if (type == 'earthquake') {
+                marker = L.marker([lt, lo], {icon: earthquakeIcon}, {riseOnHover: true});
+            } else if (type == 'flood') {
+                marker = L.marker([lt, lo], {icon: floodIcon}, {riseOnHover: true});
+            } else if (type == 'person') {
+                marker = L.marker([lt, lo], {icon: personIcon}, {riseOnHover: true});
+            } else if (type == 'sar') {
+                marker = L.marker([lt, lo], {icon: sarIcon}, {riseOnHover: true});
+            } else if (type == 'tornado') {
+                marker = L.marker([lt, lo], {icon: tornadoIcon}, {riseOnHover: true});
+            } else if (type == 'skull') {
+                marker = L.marker([lt, lo], {icon: skullIcon}, {riseOnHover: true});
+            } else if (type == 'treedown') {
+                marker = L.marker([lt, lo], {icon: treedownIcon}, {riseOnHover: true});
+            } else if (type == 'tsunami') {
+                marker = L.marker([lt, lo], {icon: tsunamiIcon}, {riseOnHover: true});
+            } else if (type == 'zombie') {
+                marker = L.marker([lt, lo], {icon: zombieIcon}, {riseOnHover: true});
+            } else {
+                marker = L.marker([lt, lo], {icon: carIcon}, {riseOnHover: true});
+            }
+            marker.bindPopup('Make: ' + make + '<br>Model: ' + model + '<br>Loc: ' + lt + ', ' + lo + '<br>Last Update: ' + time);
+            marker.addTo(ovrLayer);
+        }//end else
+
+    }//end for
+
+    ovrLayer.addTo(mymap);
+
     //popup on map click
     var cliPopup = L.popup();
     function onMapClick(e) {

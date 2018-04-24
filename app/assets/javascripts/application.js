@@ -11,3 +11,4 @@
 //= require live_update
 var resLayer = L.layerGroup([]);
 var vehLayer = L.layerGroup([]);
+var ovrLayer = L.layerGroup([]);
