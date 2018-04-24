@@ -11,8 +11,6 @@
 <script>
     vehLayer.clearLayers();
 
-    var vehArray = [];
-    vehArray.length = 0;
     var i, marker;
 
     for (i = 1; i < 1000; i++){
@@ -20,14 +18,13 @@
         var lo = $('#veh-info'+i).data('long');
         var time = $('#veh-info'+i).data('time');
         var type = $('#veh-info'+i).data('type');
-        var make = $('#veh-info'+1).data('make');
-        var model = $('#veh-info'+1).data('model');
-        var vID = $('#veh-info'+1).data('vehicle_id');
+        var make = $('#veh-info'+i).data('make');
+        var model = $('#veh-info'+i).data('model');
+        var vID = $('#veh-info'+i).data('vehicle_id');
 
         if (lt === undefined) {
             i = 1000;
         } else {
-            k = i;
             if (type == 'ambulance') {
                 marker = L.marker([lt, lo], {icon: ambulanceIcon}, {riseOnHover: true});
             } else if (type == 'truck') {
@@ -49,9 +46,6 @@
 
     }//end for
 
-    $(document).ready(function () {
-        vehLayer.addTo(mymap);
-    });
-
+    vehLayer.addTo(mymap);
 
 </script>
