@@ -9,3 +9,4 @@
 //= require leaflet
 //= require turbolinks
 //= require live_update
+var resLayer = L.layerGroup([]);
